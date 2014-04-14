@@ -1,12 +1,23 @@
-﻿Build started 2014-04-14 11:03:21 AM.
-     1>Project "C:\Users\Josh\Dropbox\GBC\Semester 4\GAME2002\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\MeshEntityDemo.vcxproj" on node 2 (Build target(s)).
+﻿Build started 14/04/2014 1:51:01 PM.
+     1>Project "C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\MeshEntityDemo.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Users\Josh\Dropbox\GBC\Semester 4\GAME2002\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\..\Bullet\src" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _NOAUDIO /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\GameObject.cpp ..\GamePhysics.cpp
-         GamePhysics.cpp
-         GameObject.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\..\Bullet\src" /I"C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\inc" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\EndState.cpp ..\MenuState.cpp ..\PlayState.cpp ..\main.cpp
+         main.cpp
+     1>c:\george brown\multimedia systems development\shuffleboard\meshentitydemo\main.cpp(32): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\george brown\multimedia systems development\shuffleboard\meshentitydemo\main.cpp(43): warning C4244: 'initializing' : conversion from 'unsigned long' to 'float', possible loss of data
+     1>c:\george brown\multimedia systems development\shuffleboard\meshentitydemo\main.cpp(49): warning C4305: '=' : truncation from 'double' to 'float'
+         PlayState.cpp
+     1>c:\george brown\multimedia systems development\shuffleboard\meshentitydemo\playstate.cpp(24): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\george brown\multimedia systems development\shuffleboard\meshentitydemo\playstate.cpp(30): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\george brown\multimedia systems development\shuffleboard\meshentitydemo\playstate.cpp(126): warning C4244: 'argument' : conversion from 'float' to 'DWORD', possible loss of data
+     1>c:\george brown\multimedia systems development\shuffleboard\meshentitydemo\playstate.cpp(151): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+         Generating Code...
+         Compiling...
+         MenuState.cpp
+         EndState.cpp
          Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Josh\Dropbox\GBC\Semester 4\GAME2002\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo_debug.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Josh\Dropbox\GBC\Semester 4\GAME2002\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\..\Bullet\lib" ..\..\Engine\lib\debug\Advanced2D.lib d3d9.lib d3dx9.lib dinput8.lib dxguid.lib winmm.lib xinput.lib Strmiids.lib BulletDynamics_vs2010_debug.lib BulletCollision_vs2010_debug.lib LinearMath_vs2010_debug.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Josh\Dropbox\GBC\Semester 4\GAME2002\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo_debug.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Josh\Dropbox\GBC\Semester 4\GAME2002\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo_debug.lib" /MACHINE:X86 Debug\EndState.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo_debug.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\..\Bullet\lib" /LIBPATH:"C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\lib" ..\..\Engine\lib\debug\Advanced2D.lib d3d9.lib d3dx9.lib dinput8.lib dxguid.lib winmm.lib xinput.lib Strmiids.lib BulletDynamics_vs2010_debug.lib BulletCollision_vs2010_debug.lib LinearMath_vs2010_debug.lib fmodL_vc.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo_debug.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo_debug.lib" /MACHINE:X86 Debug\EndState.obj
          Debug\Game.obj
          Debug\GameEngine.obj
          Debug\GameObject.obj
@@ -24,9 +35,9 @@
          Debug\PlayState.obj
          Debug\tinyxml2.obj
          Debug\XMLTranscoder.obj
-         MeshEntityDemo.vcxproj -> C:\Users\Josh\Dropbox\GBC\Semester 4\GAME2002\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo_debug.exe
-     1>Done Building Project "C:\Users\Josh\Dropbox\GBC\Semester 4\GAME2002\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\MeshEntityDemo.vcxproj" (Build target(s)).
+         MeshEntityDemo.vcxproj -> C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo_debug.exe
+     1>Done Building Project "C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\MeshEntityDemo.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:04.92
+Time Elapsed 00:00:10.42

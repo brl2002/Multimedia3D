@@ -176,5 +176,8 @@
     <ClInclude Include="..\XMLTranscoder.h">
       <Filter>Header Files\XML</Filter>
     </ClInclude>
+    <ClInclude Include="..\Contact.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

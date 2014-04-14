@@ -48,6 +48,8 @@ void game_update(float dt)
 	{
 		deltaTime = 0.15;
 	}
+
+	g_engine->audio->Update();
 }
 
 void game_render3d()
@@ -97,7 +99,10 @@ void game_cleanup()
 
 void game_end() 
 {
+    g_engine->audio->StopAll();
+	g_engine->audio->Release();
 
+	GameInst::Instance()->End();
 }
 
 void game_mouseButton(int button, int x, int y)

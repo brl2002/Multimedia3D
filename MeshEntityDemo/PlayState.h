@@ -76,6 +76,8 @@ private:
 	std::vector<IPlayer*> m_players;
 
 	GUIText* m_player;
+
+	Sample *sample;
 };
 
 #endif

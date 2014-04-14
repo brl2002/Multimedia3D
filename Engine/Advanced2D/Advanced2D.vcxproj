@@ -55,14 +55,16 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_NOAUDIO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -92,6 +94,8 @@
     <ClCompile Include="..\Advanced2D.cpp" />
     <ClCompile Include="..\Audio.cpp" />
     <ClCompile Include="..\Camera.cpp" />
+    <ClCompile Include="..\common.cpp" />
+    <ClCompile Include="..\common_platform.cpp" />
     <ClCompile Include="..\Entity.cpp" />
     <ClCompile Include="..\Input.cpp" />
     <ClCompile Include="..\Light.cpp" />
@@ -108,6 +112,8 @@
     <ClInclude Include="..\Advanced2D.h" />
     <ClInclude Include="..\Audio.h" />
     <ClInclude Include="..\Camera.h" />
+    <ClInclude Include="..\common.h" />
+    <ClInclude Include="..\common_platform.h" />
     <ClInclude Include="..\Entity.h" />
     <ClInclude Include="..\Input.h" />
     <ClInclude Include="..\Light.h" />

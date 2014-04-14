@@ -12,6 +12,9 @@ void PlayState::Init()
 	GamePhysics::getInstance().Initialize();
 	GUIManager::getInstance()->Init();
 
+	sample = g_engine->audio->Load("fishingmusic.mp3");
+	g_engine->audio->Play(sample);
+
 	idleCamPos = Vector3(0.0f, 20.0f, 100.0f);
 	currentCamPos = Vector3(idleCamPos);
 	throwCamPos = Vector3(0.0f, 20.0f, -20.0f);

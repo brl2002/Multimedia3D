@@ -1,0 +1,38 @@
+﻿Build started 11/04/2014 7:29:26 PM.
+     1>Project "C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\MeshEntityDemo.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\..\Bullet\src" /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _NOAUDIO /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\main.cpp
+         main.cpp
+     1>..\main.cpp(32): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>..\main.cpp(43): warning C4244: 'initializing' : conversion from 'unsigned long' to 'float', possible loss of data
+     1>..\main.cpp(47): warning C4244: 'argument' : conversion from 'float' to 'DWORD', possible loss of data
+     1>..\main.cpp(49): warning C4305: '=' : truncation from 'double' to 'float'
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\..\Bullet\src" ..\..\Engine\lib\Advanced2D.lib d3d9.lib d3dx9.lib dinput8.lib dxguid.lib winmm.lib xinput.lib Strmiids.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo.lib" /MACHINE:X86 /SAFESEH Release\EndState.obj
+         Release\Game.obj
+         Release\GameEngine.obj
+         Release\GameObject.obj
+         Release\GamePhysics.obj
+         Release\main.obj
+         Release\MenuState.obj
+         Release\PauseState.obj
+         Release\PlayState.obj
+     1>GameObject.obj : error LNK2001: unresolved external symbol "void * __cdecl btAlignedAllocInternal(unsigned int,int)" (?btAlignedAllocInternal@@YAPAXIH@Z)
+     1>GameObject.obj : error LNK2001: unresolved external symbol "public: __thiscall btRigidBody::btRigidBody(struct btRigidBody::btRigidBodyConstructionInfo const &)" (??0btRigidBody@@QAE@ABUbtRigidBodyConstructionInfo@0@@Z)
+     1>GameObject.obj : error LNK2001: unresolved external symbol "void __cdecl btAlignedFreeInternal(void *)" (?btAlignedFreeInternal@@YAXPAX@Z)
+     1>GamePhysics.obj : error LNK2001: unresolved external symbol "public: __thiscall btGeneric6DofConstraint::btGeneric6DofConstraint(class btRigidBody &,class btTransform const &,bool)" (??0btGeneric6DofConstraint@@QAE@AAVbtRigidBody@@ABVbtTransform@@_N@Z)
+     1>GamePhysics.obj : error LNK2001: unresolved external symbol "public: __thiscall btBoxShape::btBoxShape(class btVector3 const &)" (??0btBoxShape@@QAE@ABVbtVector3@@@Z)
+     1>GamePhysics.obj : error LNK2001: unresolved external symbol "public: __thiscall btDefaultCollisionConfiguration::btDefaultCollisionConfiguration(struct btDefaultCollisionConstructionInfo const &)" (??0btDefaultCollisionConfiguration@@QAE@ABUbtDefaultCollisionConstructionInfo@@@Z)
+     1>GamePhysics.obj : error LNK2001: unresolved external symbol "public: __thiscall btDbvtBroadphase::btDbvtBroadphase(class btOverlappingPairCache *)" (??0btDbvtBroadphase@@QAE@PAVbtOverlappingPairCache@@@Z)
+     1>GamePhysics.obj : error LNK2001: unresolved external symbol "public: __thiscall btDiscreteDynamicsWorld::btDiscreteDynamicsWorld(class btDispatcher *,class btBroadphaseInterface *,class btConstraintSolver *,class btCollisionConfiguration *)" (??0btDiscreteDynamicsWorld@@QAE@PAVbtDispatcher@@PAVbtBroadphaseInterface@@PAVbtConstraintSolver@@PAVbtCollisionConfiguration@@@Z)
+     1>GamePhysics.obj : error LNK2001: unresolved external symbol "public: __thiscall btCollisionDispatcher::btCollisionDispatcher(class btCollisionConfiguration *)" (??0btCollisionDispatcher@@QAE@PAVbtCollisionConfiguration@@@Z)
+     1>GamePhysics.obj : error LNK2001: unresolved external symbol "public: void __thiscall btCollisionObject::forceActivationState(int)const " (?forceActivationState@btCollisionObject@@QBEXH@Z)
+     1>GamePhysics.obj : error LNK2001: unresolved external symbol "public: void __thiscall btCollisionObject::setActivationState(int)const " (?setActivationState@btCollisionObject@@QBEXH@Z)
+     1>GamePhysics.obj : error LNK2001: unresolved external symbol "public: __thiscall btSequentialImpulseConstraintSolver::btSequentialImpulseConstraintSolver(void)" (??0btSequentialImpulseConstraintSolver@@QAE@XZ)
+     1>Advanced2D.lib(Advanced2D.obj) : error LNK2001: unresolved external symbol "void __cdecl game_mouseButton(int)" (?game_mouseButton@@YAXH@Z)
+     1>C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo.exe : fatal error LNK1120: 13 unresolved externals
+     1>Done Building Project "C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\MeshEntityDemo.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:03.18

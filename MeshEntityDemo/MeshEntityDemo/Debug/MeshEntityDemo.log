@@ -1,0 +1,32 @@
+﻿Build started 2014-04-14 11:03:21 AM.
+     1>Project "C:\Users\Josh\Dropbox\GBC\Semester 4\GAME2002\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\MeshEntityDemo.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Users\Josh\Dropbox\GBC\Semester 4\GAME2002\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\..\Bullet\src" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _NOAUDIO /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\GameObject.cpp ..\GamePhysics.cpp
+         GamePhysics.cpp
+         GameObject.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Josh\Dropbox\GBC\Semester 4\GAME2002\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo_debug.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Josh\Dropbox\GBC\Semester 4\GAME2002\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\..\Bullet\lib" ..\..\Engine\lib\debug\Advanced2D.lib d3d9.lib d3dx9.lib dinput8.lib dxguid.lib winmm.lib xinput.lib Strmiids.lib BulletDynamics_vs2010_debug.lib BulletCollision_vs2010_debug.lib LinearMath_vs2010_debug.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Josh\Dropbox\GBC\Semester 4\GAME2002\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo_debug.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Josh\Dropbox\GBC\Semester 4\GAME2002\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo_debug.lib" /MACHINE:X86 Debug\EndState.obj
+         Debug\Game.obj
+         Debug\GameEngine.obj
+         Debug\GameObject.obj
+         Debug\GamePhysics.obj
+         Debug\GUICharacter.obj
+         Debug\GUIManager.obj
+         Debug\GUISprite.obj
+         Debug\GUIText.obj
+         Debug\IRound.obj
+         Debug\IRoundHandler.obj
+         Debug\IThrow.obj
+         Debug\main.obj
+         Debug\MenuState.obj
+         Debug\PauseState.obj
+         Debug\PlayState.obj
+         Debug\tinyxml2.obj
+         Debug\XMLTranscoder.obj
+         MeshEntityDemo.vcxproj -> C:\Users\Josh\Dropbox\GBC\Semester 4\GAME2002\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo_debug.exe
+     1>Done Building Project "C:\Users\Josh\Dropbox\GBC\Semester 4\GAME2002\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\MeshEntityDemo.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.92

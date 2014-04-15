@@ -12,7 +12,7 @@ GamePhysics::GamePhysics() :
 	m_pPickedBody(0),
 	m_pPickConstraint(0), 
 	m_cameraPosition(0.0f, 20.0f, 100.0f),
-	m_cameraDistance(100.0f),
+	m_cameraDistance(0.0f),
 	m_nearPlane(1.0f),
 	m_farPlane(2000.0f),
 	m_screenWidth(800), 
@@ -86,6 +86,11 @@ void GamePhysics::PhysicsUpdate(float dt)
 	{
 		//get the object from the iterator
 		GameObject* pObj = *i;
+
+		if (pObj->ContactTestRequired())
+		{
+			ContactTest(pObj);
+		}
 		
 		//Sync object's mesh with rigidbody
 		btTransform transform = pObj->GetRigidBody()->getWorldTransform();
@@ -97,6 +102,15 @@ void GamePhysics::PhysicsUpdate(float dt)
 			mesh->SetPosition(v.x(), v.y(), -v.z());
 		}
 	}
+}
+
+void GamePhysics::ContactTest(GameObject *gameObject)
+{
+	btRigidBody *rigidBody = gameObject->GetRigidBody();
+	ContactInfo info;
+	info.gameObject = gameObject;
+	ContactSensorCallback callback(*rigidBody, info);
+	m_pWorld->contactTest(rigidBody, callback);
 }
 
 void GamePhysics::Reshape(int w, int h) {
@@ -226,10 +240,10 @@ void GamePhysics::DrawLine(LPD3DXLINE line, D3DXMATRIX *camProj, D3DCOLOR color,
 	line->DrawTransform(lineSet, 2, camProj, color);
 }
 
-GameObject* GamePhysics::CreateGameObject(btCollisionShape* pShape, const float &mass, const btVector3 &color, const btVector3 &initialPosition, const btQuaternion &initialRotation)
+GameObject* GamePhysics::CreateGameObject(GameObjectType type, btCollisionShape* pShape, const float &mass, const btVector3 &color, const btVector3 &initialPosition, const btQuaternion &initialRotation)
 {
 	// create a new game object
-	GameObject* pObject = new GameObject(pShape, mass, color, initialPosition, initialRotation);
+	GameObject* pObject = new GameObject(type, pShape, mass, color, initialPosition, initialRotation);
 
 	// push it to the back of the list
 	m_objects.push_back(pObject);
@@ -344,7 +358,7 @@ void GamePhysics::ShootObject(btRigidBody *rigidBody, float speed, int x, int y)
 void GamePhysics::ShootBox(const btVector3 &direction)
 {
 	// create a new box object
-	GameObject* pObject = CreateGameObject(new btBoxShape(btVector3(1, 1, 1)), 1, btVector3(0.4f, 0.f, 0.4f), m_cameraPosition);
+	GameObject* pObject = CreateGameObject(FISH, new btBoxShape(btVector3(1, 1, 1)), 1, btVector3(0.4f, 0.f, 0.4f), m_cameraPosition);
 
 	// calculate the velocity
 	btVector3 velocity = direction; 

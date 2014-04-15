@@ -12,7 +12,7 @@ void PlayState::Init()
 	GamePhysics::getInstance().Initialize();
 	GUIManager::getInstance()->Init();
 
-	sample = g_engine->audio->Load("fishingmusic.mp3");
+	sample = g_engine->audio->Load("trollsong.mp3");
 	g_engine->audio->Play(sample);
 
 	idleCamPos = Vector3(0.0f, 20.0f, 100.0f);
@@ -33,14 +33,19 @@ void PlayState::Init()
 
     //create a directional light
     D3DXVECTOR3 pos(0.0f,100.0f,0.0f);
-    D3DXVECTOR3 dir(0.0f,-1.0f,10.0f);
+    D3DXVECTOR3 dir(0.0f,1.0f,0.0f);
 	m_pStageLight = new Light(0, D3DLIGHT_DIRECTIONAL, pos, dir, 100);
     m_pStageLight->setColor(D3DXCOLOR(1,1,1,1));
 
 	GamePhysics::getInstance().SetCamera(m_pShotCamera);
 	
-	GameObject *plane = GamePhysics::getInstance().CreateGameObject(new btBoxShape(btVector3(1,20,200)), 0, btVector3(0.2f, 0.6f, 0.6f), btVector3(0.0f, 0.0f, 100.0f));
+	GameObject *plane = GamePhysics::getInstance().CreateGameObject(OTHER, new btBoxShape(btVector3(1,20,200)), 0, btVector3(0.2f, 0.6f, 0.6f), btVector3(0.0f, 0.0f, 100.0f));
 	plane->GetRigidBody()->setFriction(0.5f);
+	plane->LoadMesh("wood.x");
+	plane->SetScale(4.0f, 3.0f, 15.0f);
+
+	GameObject *trigger = GamePhysics::getInstance().CreateGameObject(TRIGGER, new btBoxShape(btVector3(5, 5, 15)), 0, btVector3(0.2f, 0.6f, 0.6f), btVector3(-10.0f, 6.0f, 175.0f));
+	trigger->GetRigidBody()->setCollisionFlags(trigger->GetRigidBody()->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
 
 	GamePhysics::getInstance().UpdateCamera();
 
@@ -146,7 +151,7 @@ void PlayState::Render3D()
 		m_pStageLight->Update();
 	}
 
-	if (m_pShotCamera)
+	if (GamePhysics::getInstance().GetCamera() == m_pShotCamera)
 	{
 		m_pShotCamera->setPosition(currentCamPos.getX(), currentCamPos.getY(), currentCamPos.getZ());
 		m_pShotCamera->setTarget(0.0f, 0.0f, 0.0f);
@@ -154,13 +159,13 @@ void PlayState::Render3D()
 		cameraVec = Vector3(0.0, 0.0, 0.0);
 	}
 
-	if (m_pFishCamera)
+	if (GamePhysics::getInstance().GetCamera() == m_pFishCamera)
 	{
-		//btVector3 p = fish->GetRigidBody()->getWorldTransform().getOrigin();
-
-		//m_pFishCamera->setPosition(p.getX(), p.getY(), p.getZ());
-		//m_pFishCamera->setTarget(p.getX(), p.getY(), p.getZ());
-		//m_pFishCamera->Update();
+		btVector3 p = IRoundHandler::getInstance().GetCurrentRound().GetCurrentThrow().GetFishPosition();
+		m_pFishCamera->setPosition(p.getX(), p.getY() + 100.0f, -p.getZ());
+		m_pFishCamera->setUpDirection(0.0f, 0.0f, -1.0f);
+		m_pFishCamera->setTarget(p.getX(), p.getY(), -p.getZ());
+		m_pFishCamera->Update();
 	}
 }
 

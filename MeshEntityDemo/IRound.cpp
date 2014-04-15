@@ -71,3 +71,8 @@ void IRound::NextThrow()
 		IRoundHandler::getInstance().NextRound();
 	}
 }
+
+IThrow& IRound::GetCurrentThrow()
+{
+	return m_pThrows.back();
+}

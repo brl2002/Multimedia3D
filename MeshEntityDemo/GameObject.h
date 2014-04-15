@@ -5,10 +5,17 @@
 #include "btBulletDynamicsCommon.h"
 #include "DXMotionState.h"
 
+enum GameObjectType
+{
+	FISH,
+	TRIGGER,
+	OTHER
+};
+
 class GameObject
 {
 public:
-	GameObject(btCollisionShape* pShape, float mass, const btVector3 &color, const btVector3 &initialPosition = btVector3(0,0,0), const btQuaternion &initialRotation = btQuaternion(0,0,1,1));
+	GameObject(GameObjectType type, btCollisionShape* pShape, float mass, const btVector3 &color, const btVector3 &initialPosition = btVector3(0,0,0), const btQuaternion &initialRotation = btQuaternion(0,0,1,1));
 	~GameObject();
 
 	void SetMesh(Advanced2D::Mesh *mesh);
@@ -33,12 +40,18 @@ public:
 
 	void SetScale(double x, double y, double z);
 
+	GameObjectType GetType() { return m_type; }
+
+	void RequiresContactTest() { m_RequiresContactTest = true; }
+	bool ContactTestRequired() { return m_RequiresContactTest; }
+
 protected:
 	Advanced2D::Mesh *m_mesh;
 	btCollisionShape*  m_pShape;
 	btRigidBody*    m_pBody;
 	DXMotionState*  m_pMotionState;
 	btVector3      m_color;
-
+	bool m_RequiresContactTest;
+	GameObjectType m_type;
 };
 #endif

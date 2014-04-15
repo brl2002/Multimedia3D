@@ -100,3 +100,8 @@ void IRoundHandler::NextThrow()
 		m_rounds.back().NextThrow();
 	}
 }
+
+IRound& IRoundHandler::GetCurrentRound()
+{
+	return m_rounds.back();
+}

@@ -5,6 +5,7 @@
 #include "BulletDynamics/Dynamics/btDynamicsWorld.h"
 #include "DXMotionState.h"
 #include "GameObject.h"
+#include "Contact.h"
 #include <vector>
 #include <Windows.h>
 typedef std::vector<GameObject*> GameObjects;
@@ -44,7 +45,7 @@ public:
 
 	void UpdateCamera();
 
-	GameObject* CreateGameObject(btCollisionShape* pShape, 
+	GameObject* CreateGameObject(GameObjectType type, btCollisionShape* pShape, 
 			const float &mass, 
 			const btVector3 &color = btVector3(1.0f,1.0f,1.0f), 
 			const btVector3 &initialPosition = btVector3(0.0f,0.0f,0.0f), 
@@ -71,6 +72,7 @@ protected:
 protected:
 	void DrawBox(GameObject *gameObject);
 	void DrawLine(LPD3DXLINE line, D3DXMATRIX *camProj, D3DCOLOR color, float v1_x, float v1_y, float v1_z, float v2_x, float v2_y, float v2_z);
+	void ContactTest(GameObject *gameObject);
 
 protected:
 	GamePhysics();

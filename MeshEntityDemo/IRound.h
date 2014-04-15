@@ -25,6 +25,8 @@ public:
 
 	int getNumThrows() { return m_pThrows.size(); }
 
+	IThrow& GetCurrentThrow();
+
 private:
 	int m_numThrows;
 	std::vector<IThrow> m_pThrows;

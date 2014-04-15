@@ -1,6 +1,24 @@
-﻿Build started 14/04/2014 1:45:51 PM.
+﻿Build started 14/04/2014 6:30:29 PM.
      1>Project "C:\George Brown\Multimedia Systems Development\ShuffleBoard\Engine\Advanced2D\Advanced2D.vcxproj" on node 2 (Build target(s)).
-     1>Lib:
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\inc" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\Advanced2D.cpp ..\Audio.cpp ..\Camera.cpp ..\Entity.cpp ..\Input.cpp ..\Light.cpp ..\Mesh.cpp ..\ParticleEmitter.cpp ..\Sprite.cpp ..\Texture.cpp ..\Timer.cpp ..\Vector3.cpp ..\Video.cpp ..\winmain.cpp
+         Camera.cpp
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         winmain.cpp
+         Video.cpp
+         Vector3.cpp
+         Timer.cpp
+         Texture.cpp
+         Sprite.cpp
+         ParticleEmitter.cpp
+         Mesh.cpp
+         Light.cpp
+         Input.cpp
+         Entity.cpp
+         Audio.cpp
+         Advanced2D.cpp
+       Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\..\Engine\lib\debug\Advanced2D.lib" fmodL_vc.lib /LIBPATH:"C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\lib" /NOLOGO Debug\Advanced2D.obj
          Debug\Audio.obj
          Debug\Camera.obj
@@ -22,4 +40,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.25
+Time Elapsed 00:00:02.76

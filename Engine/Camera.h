@@ -39,6 +39,7 @@ public:
 	D3DXVECTOR3 getPosition() { return p_position; }
 	void setPosition(float x, float y, float z);
 	void setPosition(D3DXVECTOR3 position);
+	void setUpDirection(float x, float y, float z);
 	float getX() { return p_position.x; }
 	void setX(float value) { p_position.x = value; }
 	float getY() { return p_position.y; }

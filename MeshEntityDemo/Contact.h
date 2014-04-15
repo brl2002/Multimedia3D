@@ -52,7 +52,8 @@ struct ContactSensorCallback : public btCollisionWorld::ContactResultCallback
 			pt = cp.m_localPointB;
 		}
 		// do stuff with the collision point
-
+		colObj0-
+		OutputDebugStringW(L"SDFSDF");
 
 		return 0; // not actually sure if return value is used for anything...?
 	}

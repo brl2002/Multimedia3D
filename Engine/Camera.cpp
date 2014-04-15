@@ -45,6 +45,13 @@ void Camera::setPosition(float x, float y, float z)
 	this->p_position.z = z;
 }
 
+void Camera::setUpDirection(float x, float y, float z)
+{
+	this->p_updir.x = x;
+	this->p_updir.y = y;
+	this->p_updir.z = z;
+}
+
 void Camera::setPosition(D3DXVECTOR3 position)
 {
 	this->setPosition(position.x, position.y, position.z);

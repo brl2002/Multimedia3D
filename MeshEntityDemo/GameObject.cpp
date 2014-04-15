@@ -1,7 +1,9 @@
 #include "GameObject.h"
 
-GameObject::GameObject(btCollisionShape* pShape, float mass, const btVector3 &color, const btVector3 &initialPosition, const btQuaternion &initialRotation)
+GameObject::GameObject(GameObjectType type, btCollisionShape* pShape, float mass, const btVector3 &color, const btVector3 &initialPosition, const btQuaternion &initialRotation)
 {
+	m_type = type;
+
 	// store the shape for later usage
 	m_pShape = pShape;
 

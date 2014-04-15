@@ -17,9 +17,10 @@ IThrow::~IThrow()
 
 void IThrow::Init()
 {
-	m_pFish = GamePhysics::getInstance().CreateGameObject(new btBoxShape(btVector3(1,5,1)), 0.5f, btVector3(1.0f, 1.0f, 1.0f), btVector3(0.0f, 50.0f, 0.0f));
+	m_pFish = GamePhysics::getInstance().CreateGameObject(FISH, new btBoxShape(btVector3(1,5,1)), 0.5f, btVector3(1.0f, 1.0f, 1.0f), btVector3(0.0f, 50.0f, 0.0f));
 	m_pFish->GetRigidBody()->setFriction(0.1f);
 	m_pFish->LoadMesh("fish.x");
+	m_pFish->RequiresContactTest();
 
 	m_playerText = new GUIText(m_player->getName(), Game::SCREEN_WIDTH - 20,
 		Game::SCREEN_HEIGHT - 30, GUITextAlignment::RIGHT);
@@ -71,6 +72,11 @@ void IThrow::SetFishPosition(float x, float y, float z, float dt)
 	t.setOrigin(v);
 	m_pFish->GetRigidBody()->updateDeactivation(dt);
 	m_pFish->GetRigidBody()->setWorldTransform(t);
+}
+
+btVector3 IThrow::GetFishPosition()
+{
+	return m_pFish->GetRigidBody()->getWorldTransform().getOrigin();
 }
 
 void IThrow::End()

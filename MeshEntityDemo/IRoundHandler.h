@@ -29,6 +29,8 @@ public:
 	void NextRound();
 	void NextThrow();
 
+	IRound& GetCurrentRound();
+
 private:
 	IRoundHandler() {}
 	

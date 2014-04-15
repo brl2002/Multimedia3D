@@ -18,6 +18,8 @@ public:
 	void HandleKeyDown(int key);
 	void End();
 
+	btVector3 GetFishPosition();
+
 private:
 	bool m_throwing;
 

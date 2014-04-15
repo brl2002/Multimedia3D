@@ -46,7 +46,7 @@ void PlayState::Init()
 	plane->LoadMesh("wood.x");
 	plane->SetScale(4.0f, 3.0f, 15.0f);
 
-	m_chef = GamePhysics::getInstance().CreateGameObject(TRIGGER, new btBoxShape(btVector3(1, 1, 1)), 0, btVector3(0.2f, 0.6f, 0.6f), btVector3(-30.0f, 6.0f, m_SpawnZ));
+	m_chef = GamePhysics::getInstance().CreateGameObject(TRIGGER, new btBoxShape(btVector3(1, 1, 1)), 0, btVector3(0.2f, 0.6f, 0.6f), btVector3(-30.0f, 0.0f, m_SpawnZ));
 	m_chef->GetRigidBody()->setCollisionFlags(m_chef->GetRigidBody()->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
 	m_chef->LoadMesh("chef.x");
 	m_chef->SetScale(5.0f, 5.0f, 5.0f);

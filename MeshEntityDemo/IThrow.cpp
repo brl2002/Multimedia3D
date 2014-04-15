@@ -57,6 +57,7 @@ void IThrow::OnMouseDown(int button, int x, int y)
 	{
 		m_pFish->GetRigidBody()->activate(true);
 		m_HasBeenThrown = true;
+		PlayState::Instance()->SwitchCamera();
 		GamePhysics::getInstance().ShootObject(m_pFish->GetRigidBody(), 15.0f, x, y);
 		//physInst->SetCamera(m_pFishCamera);
 		m_throwing = true;
@@ -99,6 +100,7 @@ void IThrow::PostUpdate(float deltaTime)
 	if (m_NextThrow)
 	{
 		End();
+		PlayState::Instance()->SwitchCamera();
 		IRoundHandler::getInstance().NextThrow();
 	}
 }

@@ -1,8 +1,12 @@
-﻿Build started 14/04/2014 11:31:29 PM.
+﻿Build started 14/04/2014 11:39:08 PM.
      1>Project "C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\MeshEntityDemo.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\..\Bullet\src" /I"C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\inc" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\IThrow.cpp
-         IThrow.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\..\Bullet\src" /I"C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\inc" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\PlayState.cpp
+         PlayState.cpp
+     1>c:\george brown\multimedia systems development\shuffleboard\meshentitydemo\playstate.cpp(26): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\george brown\multimedia systems development\shuffleboard\meshentitydemo\playstate.cpp(32): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\george brown\multimedia systems development\shuffleboard\meshentitydemo\playstate.cpp(153): warning C4244: 'argument' : conversion from 'float' to 'DWORD', possible loss of data
+     1>c:\george brown\multimedia systems development\shuffleboard\meshentitydemo\playstate.cpp(178): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo_debug.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\..\Bullet\lib" /LIBPATH:"C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\lib" ..\..\Engine\lib\debug\Advanced2D.lib d3d9.lib d3dx9.lib dinput8.lib dxguid.lib winmm.lib xinput.lib Strmiids.lib BulletDynamics_vs2010_debug.lib BulletCollision_vs2010_debug.lib LinearMath_vs2010_debug.lib fmodL_vc.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo_debug.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\George Brown\Multimedia Systems Development\ShuffleBoard\MeshEntityDemo\MeshEntityDemo\..\bin\MeshEntityDemo_debug.lib" /MACHINE:X86 Debug\EndState.obj
          Debug\Game.obj
@@ -27,4 +31,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.36
+Time Elapsed 00:00:03.59

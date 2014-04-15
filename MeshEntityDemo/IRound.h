@@ -32,6 +32,8 @@ private:
 	int m_numThrows;
 	std::vector<IThrow> m_pThrows;
 
+	std::vector<IThrow> m_ThrowsToDelete;
+
 	std::vector<IPlayer*> m_players;
 };
 

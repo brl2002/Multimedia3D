@@ -39,9 +39,15 @@ void PlayState::Init()
 	m_pStageLight = new Light(0, D3DLIGHT_DIRECTIONAL, pos, dir, 100);
     m_pStageLight->setColor(D3DXCOLOR(1,1,1,1));
 
+	//create a directional light
+	D3DXVECTOR3 pos2(0.0f,0.0f,m_SpawnZ);
+	D3DXVECTOR3 dir2(-1.0f,0.0f,0.0f);
+	//m_pChefLight = new Light(0, D3DLIGHT_SPOT, pos2, dir2, 100);
+	//m_pChefLight->setColor(D3DXCOLOR(1,1,1,1));
+
 	GamePhysics::getInstance().SetCamera(m_pShotCamera);
 	
-	GameObject *plane = GamePhysics::getInstance().CreateGameObject(OTHER, new btBoxShape(btVector3(1,20,200)), 0, btVector3(0.2f, 0.6f, 0.6f), btVector3(0.0f, 0.0f, 100.0f));
+	GameObject *plane = GamePhysics::getInstance().CreateGameObject(OTHER, new btBoxShape(btVector3(1,20,160)), 0, btVector3(0.2f, 0.6f, 0.6f), btVector3(0.0f, 0.0f, 100.0f));
 	plane->GetRigidBody()->setFriction(0.5f);
 	plane->LoadMesh("wood.x");
 	plane->SetScale(4.0f, 3.0f, 15.0f);
@@ -64,12 +70,12 @@ void PlayState::Init()
 		m_players.push_back(new IPlayer("Player " + std::to_string(i)));
 	}
 
-	m_PlayerScore1 = new GUIText(std::to_string(m_players[1]->getScore()), Game::SCREEN_WIDTH - 20,
-	10, GUITextAlignment::RIGHT);
+	m_PlayerScore1 = new GUIText(m_players[1]->getName() + ": " + std::to_string(m_players[1]->getScore()), 1,
+	Game::SCREEN_HEIGHT - 100, GUITextAlignment::LEFT);
 	m_PlayerScore1->setScale(.5f);
 
-	m_PlayerScore2 = new GUIText(std::to_string(m_players[0]->getScore()), Game::SCREEN_WIDTH - 20,
-	50, GUITextAlignment::RIGHT);
+	m_PlayerScore2 = new GUIText(m_players[0]->getName() + ": " + std::to_string(m_players[0]->getScore()), 1,
+	Game::SCREEN_HEIGHT - 50, GUITextAlignment::LEFT);
 	m_PlayerScore2->setScale(.5f);
 
 	GUIManager::getInstance()->AddComponent(m_PlayerScore1, 0);
@@ -92,18 +98,6 @@ void PlayState::Terminate() {}
 
 void PlayState::HandleKeyDown(int key)
 {
-	//if (key == DIK_A)
-		//physInst->
-
-	if (key == DIK_D)
-		vel = D3DXVECTOR3(-1.0, 0.0, 0.0);
-
-	if (key == DIK_Q)
-		cameraVec = Vector3(1.0, 0.0, 0.0);
-
-	if (key == DIK_E)
-		cameraVec = Vector3(-1.0, 0.0, 0.0);	
-
 	IRoundHandler::getInstance().HandleKeyDown(key);
 }
 
@@ -144,8 +138,8 @@ void PlayState::HandleMouseMove(int x, int y)
 
 void PlayState::Update(float deltaTime)
 {
-	m_PlayerScore1->setText(std::to_string(m_players[1]->getScore()));
-	m_PlayerScore2->setText(std::to_string(m_players[0]->getScore()));
+	m_PlayerScore1->setText(m_players[1]->getName() + ": " + std::to_string(m_players[1]->getScore()));
+	m_PlayerScore2->setText(m_players[0]->getName() + ": " + std::to_string(m_players[0]->getScore()));
 
 	IRoundHandler::getInstance().Update(deltaTime);
 	GamePhysics::getInstance().PhysicsUpdate(deltaTime);
@@ -173,12 +167,16 @@ void PlayState::Render3D()
 		m_pStageLight->Update();
 	}
 
+	if (m_pChefLight)
+	{
+		m_pChefLight->Update();
+	}
+
 	if (GamePhysics::getInstance().GetCamera() == m_pShotCamera)
 	{
 		m_pShotCamera->setPosition(currentCamPos.getX(), currentCamPos.getY(), currentCamPos.getZ());
 		m_pShotCamera->setTarget(0.0f, 0.0f, 0.0f);
 		m_pShotCamera->Update();
-		cameraVec = Vector3(0.0, 0.0, 0.0);
 	}
 
 	if (GamePhysics::getInstance().GetCamera() == m_pFishCamera)
@@ -221,6 +219,6 @@ void PlayState::End()
     delete m_pShotCamera;
 	delete m_pFishCamera;
 
-	delete m_pFishLight;
+	delete m_pChefLight;
     delete m_pStageLight;
 }

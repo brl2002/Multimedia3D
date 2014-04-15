@@ -6,6 +6,8 @@
 #include "GUIText.h"
 #include "PlayState.h"
 
+using namespace Advanced2D;
+
 class IThrow
 {
 public:
@@ -19,6 +21,7 @@ public:
 	void HandleKeyUp(int key);
 	void HandleKeyDown(int key);
 	void End();
+	void DeleteFish();
 
 	btVector3 GetFishPosition();
 
@@ -39,6 +42,11 @@ private:
 
 	btVector3 m_FishPos;
 	btVector3 m_LastFishPos;
+
+	double m_friction;
+	double m_xPos, m_xCap;
+
+	Sample* m_pThrowSample;
 };
 
 #endif

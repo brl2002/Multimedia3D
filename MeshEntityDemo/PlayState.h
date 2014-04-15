@@ -64,7 +64,7 @@ private:
 	Camera* m_pFishCamera;
 
 	Light *m_pStageLight;
-	Light *m_pFishLight;
+	Light *m_pChefLight;
 
 	D3DXVECTOR3 vel;
 

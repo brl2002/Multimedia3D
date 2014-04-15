@@ -10,6 +10,10 @@ IThrow::IThrow(IPlayer* plr)
 	m_NextThrow = false;
 	m_HasBeenThrown = false;
 	updateCount = 3;
+
+	m_xPos = 0.0f;
+	m_xCap = 15.0f;
+	m_friction = 0.1f;
 }
 
 IThrow::~IThrow()
@@ -21,7 +25,7 @@ IThrow::~IThrow()
 void IThrow::Init()
 {
 	m_pFish = GamePhysics::getInstance().CreateGameObject(FISH, new btBoxShape(btVector3(1,5,1)), 0.5f, btVector3(1.0f, 1.0f, 1.0f), btVector3(0.0f, 50.0f, 0.0f));
-	m_pFish->GetRigidBody()->setFriction(0.1f);
+	m_pFish->GetRigidBody()->setFriction(m_friction);
 	m_pFish->LoadMesh("fish.x");
 	m_pFish->RequiresContactTest();
 
@@ -29,10 +33,12 @@ void IThrow::Init()
 	m_LastFishPos = m_FishPos;
 
 	m_playerText = new GUIText(m_player->getName(), Game::SCREEN_WIDTH - 20,
-		Game::SCREEN_HEIGHT - 30, GUITextAlignment::RIGHT);
+		1, GUITextAlignment::RIGHT);
 	m_playerText->setScale(.5f);
 
 	GUIManager::getInstance()->AddComponent(m_playerText, 0);
+
+	m_pThrowSample = g_engine->audio->Load("throw.mp3");
 }
 
 void IThrow::HandleKeyUp(int key)
@@ -48,17 +54,27 @@ void IThrow::HandleKeyUp(int key)
 
 void IThrow::HandleKeyDown(int key)
 {
-	
+	if (key == DIK_A)
+	{
+		if (m_xPos + 0.5f < m_xCap)
+			m_xPos += 0.5f;
+	}
+	if (key == DIK_D)
+	{
+		if (m_xPos - 0.5f > - m_xCap)
+			m_xPos -= 0.5f;
+	}
 }
 
 void IThrow::OnMouseDown(int button, int x, int y)
 {
 	if (!m_throwing)
 	{
+		g_engine->audio->Play(m_pThrowSample);
 		m_pFish->GetRigidBody()->activate(true);
 		m_HasBeenThrown = true;
 		PlayState::Instance()->SwitchCamera();
-		GamePhysics::getInstance().ShootObject(m_pFish->GetRigidBody(), 15.0f, x, y);
+		GamePhysics::getInstance().ShootObject(m_pFish->GetRigidBody(), 18.0f, x, y);
 		//physInst->SetCamera(m_pFishCamera);
 		m_throwing = true;
 	}
@@ -68,14 +84,14 @@ void IThrow::Update(float deltaTime)
 {
 	if (!m_throwing)
 	{
-		SetFishPosition(0.0f, 10.0f, -40.0f, deltaTime);
+		SetFishPosition(m_xPos, 10.0f, -60.0f, deltaTime);
 	}
 
 	if (m_HasBeenThrown)
 	{
 		m_FishPos = m_pFish->GetRigidBody()->getWorldTransform().getOrigin();
 
-		if (m_FishPos.getY() < -10.0f)
+		if (m_FishPos.getY() < -50.0f)
 		{
 			m_NextThrow = true;
 		}
@@ -126,6 +142,10 @@ void IThrow::End()
 		m_player->addScore(5);
 	}
 
-	GamePhysics::getInstance().DestroyGameObject(m_pFish);
 	GUIManager::getInstance()->DeleteComponent(m_playerText);
+}
+
+void IThrow::DeleteFish()
+{
+	GamePhysics::getInstance().DestroyGameObject(m_pFish);
 }

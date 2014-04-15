@@ -69,13 +69,21 @@ void IRound::PostUpdate(float deltaTime)
 
 void IRound::NextThrow()
 {
-	if (m_pThrows.size() > 1)
+	m_ThrowsToDelete.push_back(m_pThrows.back());
+	m_pThrows.pop_back();
+
+	if (!m_pThrows.empty())
 	{
-		m_pThrows.pop_back();
 		m_pThrows.back().Init();
 	}
 	else
 	{
+		for (auto i = m_ThrowsToDelete.begin(); i != m_ThrowsToDelete.end(); i++)
+		{
+			(*i).DeleteFish();
+		}
+		m_ThrowsToDelete.clear();
+
 		IRoundHandler::getInstance().NextRound();
 	}
 }

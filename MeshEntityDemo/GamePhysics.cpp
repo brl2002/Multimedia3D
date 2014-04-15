@@ -107,10 +107,21 @@ void GamePhysics::PhysicsUpdate(float dt)
 void GamePhysics::ContactTest(GameObject *gameObject)
 {
 	btRigidBody *rigidBody = gameObject->GetRigidBody();
-	ContactInfo info;
-	info.gameObject = gameObject;
-	ContactSensorCallback callback(*rigidBody, info);
-	m_pWorld->contactTest(rigidBody, callback);
+
+	for(GameObjects::iterator i = m_objects.begin(); i != m_objects.end(); ++i)
+	{
+		//get the object from the iterator
+		GameObject* pObj = *i;
+		
+		ContactInfo info;
+		info.gameObject = gameObject;
+		ContactSensorCallback callback(*rigidBody, *pObj->GetRigidBody(), info);
+		
+		if (!pObj->GetRigidBody()->hasContactResponse())
+		{
+			m_pWorld->contactPairTest(rigidBody, pObj->GetRigidBody(), callback);
+		}
+	}
 }
 
 void GamePhysics::Reshape(int w, int h) {

@@ -42,6 +42,9 @@ public:
 
 	GameObjectType GetType() { return m_type; }
 
+	void SetTriggerCollisionFlag(bool value) { m_CollidingWithTrigger = value; }
+	bool IsCollidingWithTrigger() { return m_CollidingWithTrigger; }
+
 	void RequiresContactTest() { m_RequiresContactTest = true; }
 	bool ContactTestRequired() { return m_RequiresContactTest; }
 
@@ -52,6 +55,7 @@ protected:
 	DXMotionState*  m_pMotionState;
 	btVector3      m_color;
 	bool m_RequiresContactTest;
+	bool m_CollidingWithTrigger;
 	GameObjectType m_type;
 };
 #endif

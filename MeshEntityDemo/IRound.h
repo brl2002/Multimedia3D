@@ -18,6 +18,7 @@ public:
 
 	void Init();
 	void Update(float deltaTime);
+	void PostUpdate(float deltaTime);
 	void OnMouseDown(int button, int x, int y);
 	void HandleKeyUp(int key);
 	void HandleKeyDown(int key);

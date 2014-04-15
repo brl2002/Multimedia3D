@@ -78,6 +78,13 @@ private:
 	GUIText* m_player;
 
 	Sample *sample;
+
+	GUIText* m_PlayerScore1;
+	GUIText* m_PlayerScore2;
+
+	GameObject *m_trigger;
+	GameObject *m_chef;
+	float m_SpawnZ;
 };
 
 #endif

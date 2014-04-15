@@ -54,7 +54,7 @@ void game_update(float dt)
 
 void game_render3d()
 {
-    g_engine->ClearScene(D3DCOLOR_RGBA(0,0,60,0));
+    g_engine->ClearScene(D3DCOLOR_RGBA(20,0,0,0));
     g_engine->SetIdentity();
 
 	GameInst::Instance()->Render3D();

@@ -12,6 +12,8 @@ void PlayState::Init()
 	GamePhysics::getInstance().Initialize();
 	GUIManager::getInstance()->Init();
 
+	m_SpawnZ = 175.0f;
+
 	sample = g_engine->audio->Load("trollsong.mp3");
 	g_engine->audio->Play(sample);
 
@@ -44,8 +46,13 @@ void PlayState::Init()
 	plane->LoadMesh("wood.x");
 	plane->SetScale(4.0f, 3.0f, 15.0f);
 
-	GameObject *trigger = GamePhysics::getInstance().CreateGameObject(TRIGGER, new btBoxShape(btVector3(5, 5, 15)), 0, btVector3(0.2f, 0.6f, 0.6f), btVector3(-10.0f, 6.0f, 175.0f));
-	trigger->GetRigidBody()->setCollisionFlags(trigger->GetRigidBody()->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
+	m_chef = GamePhysics::getInstance().CreateGameObject(TRIGGER, new btBoxShape(btVector3(1, 1, 1)), 0, btVector3(0.2f, 0.6f, 0.6f), btVector3(-30.0f, 6.0f, m_SpawnZ));
+	m_chef->GetRigidBody()->setCollisionFlags(m_chef->GetRigidBody()->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
+	m_chef->LoadMesh("chef.x");
+	m_chef->SetScale(5.0f, 5.0f, 5.0f);
+
+	m_trigger = GamePhysics::getInstance().CreateGameObject(TRIGGER, new btBoxShape(btVector3(5, 5, 15)), 0, btVector3(0.2f, 0.6f, 0.6f), btVector3(-10.0f, 6.0f, m_SpawnZ));
+	m_trigger->GetRigidBody()->setCollisionFlags(m_trigger->GetRigidBody()->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
 
 	GamePhysics::getInstance().UpdateCamera();
 
@@ -56,6 +63,17 @@ void PlayState::Init()
 	{
 		m_players.push_back(new IPlayer("Player " + std::to_string(i)));
 	}
+
+	m_PlayerScore1 = new GUIText(std::to_string(m_players[1]->getScore()), Game::SCREEN_WIDTH - 20,
+	10, GUITextAlignment::RIGHT);
+	m_PlayerScore1->setScale(.5f);
+
+	m_PlayerScore2 = new GUIText(std::to_string(m_players[0]->getScore()), Game::SCREEN_WIDTH - 20,
+	50, GUITextAlignment::RIGHT);
+	m_PlayerScore2->setScale(.5f);
+
+	GUIManager::getInstance()->AddComponent(m_PlayerScore1, 0);
+	GUIManager::getInstance()->AddComponent(m_PlayerScore2, 0);
 
 	IRoundHandler::getInstance().Init(m_players, m_numRounds, m_numThrows);
 }
@@ -126,8 +144,12 @@ void PlayState::HandleMouseMove(int x, int y)
 
 void PlayState::Update(float deltaTime)
 {
+	m_PlayerScore1->setText(std::to_string(m_players[1]->getScore()));
+	m_PlayerScore2->setText(std::to_string(m_players[0]->getScore()));
+
 	IRoundHandler::getInstance().Update(deltaTime);
 	GamePhysics::getInstance().PhysicsUpdate(deltaTime);
+	IRoundHandler::getInstance().PostUpdate(deltaTime);
 	GUIManager::getInstance()->Update(deltaTime);
 }
 

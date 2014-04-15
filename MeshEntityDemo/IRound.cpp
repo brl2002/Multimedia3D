@@ -59,6 +59,14 @@ void IRound::Update(float deltaTime)
 	}
 }
 
+void IRound::PostUpdate(float deltaTime)
+{
+	if (!m_pThrows.empty())
+	{
+		m_pThrows.back().PostUpdate(deltaTime);
+	}
+}
+
 void IRound::NextThrow()
 {
 	if (m_pThrows.size() > 1)

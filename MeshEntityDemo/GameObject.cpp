@@ -37,6 +37,7 @@ GameObject::GameObject(GameObjectType type, btCollisionShape* pShape, float mass
 	m_pBody = new btRigidBody(cInfo);
 
 	m_mesh = NULL;
+	m_CollidingWithTrigger = false;
 }
 
 void GameObject::SetMesh(Advanced2D::Mesh *mesh)

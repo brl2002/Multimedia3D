@@ -18,10 +18,11 @@ struct ContactSensorCallback : public btCollisionWorld::ContactResultCallback
 	//! Constructor, pass whatever context you want to have available when processing contacts
 	/*! You may also want to set m_collisionFilterGroup and m_collisionFilterMask
 	 *  (supplied by the superclass) for needsCollision() */
-	ContactSensorCallback(btRigidBody& tgtBody , ContactInfo& context /*, ... */)
-		: btCollisionWorld::ContactResultCallback(), body(tgtBody), ctxt(context) { }
+	ContactSensorCallback(btRigidBody& tgtBody , btRigidBody& oBody, ContactInfo& context /*, ... */)
+		: btCollisionWorld::ContactResultCallback(), body(tgtBody), otherBody(oBody), ctxt(context) { }
 
 	btRigidBody& body; //!< The body the sensor is monitoring
+	btRigidBody& otherBody;
 	ContactInfo& ctxt; //!< External information for contact processing
 
 	//! If you don't want to consider collisions where the bodies are joined by a constraint, override needsCollision:
@@ -52,8 +53,7 @@ struct ContactSensorCallback : public btCollisionWorld::ContactResultCallback
 			pt = cp.m_localPointB;
 		}
 		// do stuff with the collision point
-		colObj0-
-		OutputDebugStringW(L"SDFSDF");
+		ctxt.gameObject->SetTriggerCollisionFlag(true);
 
 		return 0; // not actually sure if return value is used for anything...?
 	}

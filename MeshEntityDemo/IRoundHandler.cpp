@@ -77,6 +77,14 @@ void IRoundHandler::Update(float deltaTime)
 	m_throwText->setText("THROW: " + std::to_string(m_curThrow));
 }
 
+void IRoundHandler::PostUpdate(float deltaTime)
+{
+	if (!m_rounds.empty())
+	{
+		m_rounds.back().PostUpdate(deltaTime);
+	}
+}
+
 void IRoundHandler::NextRound()
 {
 	if (m_rounds.size() > 1)

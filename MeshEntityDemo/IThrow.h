@@ -13,6 +13,7 @@ public:
 
 	void Init();
 	void Update(float deltaTime);
+	void PostUpdate(float deltaTime);
 	void OnMouseDown(int button, int x, int y);
 	void HandleKeyUp(int key);
 	void HandleKeyDown(int key);
@@ -29,6 +30,14 @@ private:
 
 	IPlayer* m_player;
 	GUIText* m_playerText;
+
+	bool m_NextThrow;
+	bool m_HasBeenThrown;
+
+	int updateCount;
+
+	btVector3 m_FishPos;
+	btVector3 m_LastFishPos;
 };
 
 #endif

@@ -39,6 +39,11 @@ void PlayState::Init()
 	m_pStageLight = new Light(0, D3DLIGHT_DIRECTIONAL, pos, dir, 100);
     m_pStageLight->setColor(D3DXCOLOR(1,1,1,1));
 
+	D3DXVECTOR3 pos2(0.0f,20.0f,0.0f);
+    D3DXVECTOR3 dir2(0.0f,0.0f,1.0f);
+	m_pFishLight = new Light(1, D3DLIGHT_SPOT, pos2, dir2, 100);
+    m_pFishLight->setColor(D3DXCOLOR(0,0,1,0));
+
 	GamePhysics::getInstance().SetCamera(m_pShotCamera);
 	
 	GameObject *plane = GamePhysics::getInstance().CreateGameObject(OTHER, new btBoxShape(btVector3(1,20,200)), 0, btVector3(0.2f, 0.6f, 0.6f), btVector3(0.0f, 0.0f, 100.0f));
@@ -171,6 +176,11 @@ void PlayState::Render3D()
 	{
 		//light->setPosition(light->getPosition().x + lightVec.getX(), light->getPosition().y + lightVec.getY(), light->getPosition().z + lightVec.getZ());
 		m_pStageLight->Update();
+	}
+
+	if (m_pFishLight)
+	{
+		m_pFishLight->Update();
 	}
 
 	if (GamePhysics::getInstance().GetCamera() == m_pShotCamera)

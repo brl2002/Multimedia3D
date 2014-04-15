@@ -28,6 +28,9 @@ void IThrow::Init()
 	m_FishPos = m_pFish->GetRigidBody()->getWorldTransform().getOrigin();
 	m_LastFishPos = m_FishPos;
 
+	m_XOffset = 0;
+	m_Direction = 1.0f;
+
 	m_playerText = new GUIText(m_player->getName(), Game::SCREEN_WIDTH - 20,
 		Game::SCREEN_HEIGHT - 30, GUITextAlignment::RIGHT);
 	m_playerText->setScale(.5f);
@@ -68,7 +71,21 @@ void IThrow::Update(float deltaTime)
 {
 	if (!m_throwing)
 	{
-		SetFishPosition(0.0f, 10.0f, -40.0f, deltaTime);
+		m_XOffset += 0.05f * deltaTime * m_Direction;
+
+		if (m_XOffset > 10.0f)
+		{
+			m_XOffset = 10.0f;
+			m_Direction *= -1.0f;
+		}
+
+		if (m_XOffset < -10.0f)
+		{
+			m_XOffset = -10.0f;
+			m_Direction *= -1.0f;
+		}
+
+		SetFishPosition(0.0f + m_XOffset, 10.0f, -40.0f, deltaTime);
 	}
 
 	if (m_HasBeenThrown)

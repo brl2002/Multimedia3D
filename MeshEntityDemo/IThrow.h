@@ -39,6 +39,9 @@ private:
 
 	btVector3 m_FishPos;
 	btVector3 m_LastFishPos;
+
+	float m_XOffset;
+	float m_Direction;
 };
 
 #endif
